@@ -1,0 +1,123 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+        html {
+        background: #f0eee8;         font-size: 106.25%;     }
+    html[data-size='lg'] {
+        font-size: 118.75%;     }
+    html[data-size='xl'] {
+        font-size: 131.25%;     }
+    body {
+        @apply bg-fondo font-sans text-body text-texto-fuerte antialiased;
+    }
+        h1 {
+        @apply font-display text-display;
+    }
+    h2 {
+        @apply font-display text-title;
+    }
+    h3 {
+        @apply font-display text-body-lg font-bold;
+    }
+
+        :focus-visible {
+        outline: 3px solid #1b3c8c;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    html[data-contrast='hi'] :focus-visible {
+        outline-color: #000;
+    }
+
+        html[data-contrast='hi'] body {
+        background: #fff;
+        color: #000;
+    }
+    html[data-contrast='hi'] .card-base,
+    html[data-contrast='hi'] .surface-flat,
+    html[data-contrast='hi'] .surface-tint,
+    html[data-contrast='hi'] .surface-raised,
+    html[data-contrast='hi'] .input-base {
+        border-color: #000;
+        border-width: 2px;
+    }
+    html[data-contrast='hi'] .app-shell {
+        background: #fff;
+    }
+
+        @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.001ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.001ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+@layer components {
+        .app-shell {
+        @apply min-h-screen w-full bg-fondo;
+    }
+        .content-col {
+        @apply mx-auto w-full;
+    }
+    .content-col-wide {
+        @apply mx-auto w-full;
+    }
+    @media (min-width: 640px) {
+        .content-col {
+            max-width: 640px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .content-col {
+            max-width: 720px;
+        }
+        .content-col-wide {
+            max-width: 1060px;
+        }
+    }
+
+        .surface-flat {
+        @apply rounded-card border border-borde bg-surface;
+    }
+    .surface-tint {
+        @apply rounded-card border border-serpost-line bg-serpost-tint;
+    }
+    .surface-raised {
+        @apply rounded-panel border border-borde bg-surface shadow-card;
+    }
+
+        .input-base {
+        @apply w-full rounded-input border border-borde bg-surface px-4 text-base text-texto-fuerte
+        outline-none transition focus:border-serpost focus:ring-2 focus:ring-serpost/25
+        disabled:cursor-not-allowed disabled:opacity-60;
+        min-height: 56px;
+    }
+        .card-base {
+        @apply rounded-card border border-borde bg-surface p-4;
+    }
+}
+
+.leaflet-container {
+    z-index: 0;
+    font: inherit;
+}
+
+[data-sonner-toaster] {
+    font-family: 'Public Sans', system-ui, -apple-system, sans-serif;
+}
+[data-sonner-toast] {
+    border-radius: 14px;
+    font-size: 0.95rem;
+}
+[data-sonner-toast] [data-title] {
+    font-weight: 600;
+}
